@@ -97,7 +97,7 @@ a{color:inherit}
 /* ---------- Filtros de agenda ---------- */
 .sticky{position:sticky;top:0;z-index:20;background:var(--bg);margin:0 -16px;padding:8px 16px 10px;border-bottom:1px solid transparent}
 .sticky.shadow{border-bottom-color:var(--line);box-shadow:0 6px 14px -12px rgba(0,0,0,.35)}
-.seg{display:grid;grid-template-columns:repeat(3,1fr);background:#e6eaf1;border-radius:12px;padding:4px;gap:4px}
+.seg{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));background:#e6eaf1;border-radius:12px;padding:4px;gap:4px}
 .seg button{border:0;background:none;border-radius:9px;min-height:44px;font-weight:700;font-size:14px;color:var(--muted);cursor:pointer}
 .seg button small{font-weight:500}
 .seg button[aria-pressed="true"]{background:#fff;color:var(--navy);box-shadow:0 1px 3px rgba(0,0,0,.12)}
@@ -200,7 +200,7 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;padding:24px 0 0}
     <div class="brand"><span>Los Cobos</span><span>Universidad El Bosque</span><span>Mayo Clinic</span></div>
     <h1>II Congreso Internacional de Cuidado Intensivo</h1>
     <p>Tu guía para el congreso: agendas y cómo llegar a cada sala.</p>
-    <span class="date"><b>19 al 21</b> de noviembre de 2026 · Bogotá</span>
+    <span class="date">Talleres <b>18</b> · Congreso <b>19 al 21</b> de noviembre de 2026 · Bogotá</span>
   </header>
   <div id="mineBox"></div>
   <div id="countBox"></div>
@@ -289,7 +289,7 @@ const TRACKS = {
   ped:{name:"Pediatría", color:"var(--t-ped)"},
   neo:{name:"Neonatología", color:"var(--t-neo)"},
   apo:{name:"Áreas de apoyo", color:"var(--t-apo)"},
-  tal:{name:"Talleres", color:"var(--t-tal)"}
+  tal:{name:"Cursos y talleres", color:"var(--t-tal)"}
 };
 
 /* ---------- LUGARES DEL CONGRESO ----------
@@ -306,13 +306,15 @@ const ROOMS = {
   fund:{name:"Auditorio Fundadores", short:"Bloque A", venue:"ueb", pin:[792,731], node:"TQ", tour:"node72", photo:IMG_FUND,
         arrive:"Al pasar los torniquetes estás en el edificio Fundadores (Bloque A). El auditorio está en este edificio.", how:"Áreas de apoyo."},
   aud5:{name:"Auditorio piso 5", short:"Los Cobos", venue:"cobos", pin:[506,746], node:"LCD", photo:"", floor:5,
-        arrive:"En el lobby de Los Cobos toma el ascensor al piso 5.", how:"Agenda de Pediatría."},
+        arrive:"En el lobby de Los Cobos toma el ascensor al piso 5.", how:"Agenda de Pediatría y curso de soporte nutricional."},
   solar:{name:"Solarium", short:"Los Cobos", venue:"cobos", pin:[520,746], node:"LCD", photo:"", floor:5,
         arrive:"En el lobby de Los Cobos toma el ascensor al piso 5. Allí está el Solarium.", how:"Agenda de Neonatología."},
   p15:{name:"Piso 15", short:"Los Cobos", venue:"cobos", pin:[513,737], node:"LCD", photo:"", floor:15,
-        arrive:"En el lobby de Los Cobos toma el ascensor al piso 15.", how:"Taller de ventilación mecánica pediátrica."},
+        arrive:"En el lobby de Los Cobos toma el ascensor al piso 15.", how:"Cursos de ventilación mecánica neonatal y pediátrica."},
   sim:{name:"Laboratorio de Simulación", short:"Bloque B", venue:"ueb", pin:[430,700], node:"B", tour:"node93", photo:"", verify:true,
         arrive:"Llegaste al Bloque B. Los laboratorios de simulación están en este edificio.", how:"Taller POCUS pediátrico."},
+  lcpocus:{name:"Sala por confirmar", short:"Los Cobos", venue:"cobos", pin:[528,756], node:"LCD", photo:"",
+        arrive:"Llegaste a Los Cobos Medical Center. La sala del curso POCUS neonatal está por confirmar: pregunta en recepción.", how:"Curso Internacional POCUS Neonatal SCAN."},
   tbd:{name:"Sala por confirmar", venue:null}
 };
 
@@ -348,7 +350,13 @@ const FULL_VIEW = [330,200,660,580];
 
 const S = [];
 function add(track,day,start,end,title,who,room,type="talk"){S.push({track,day,start,end,title,who,room,type})}
-const J="2026-11-19", V="2026-11-20", SA="2026-11-21";
+const MI="2026-11-18", J="2026-11-19", V="2026-11-20", SA="2026-11-21";
+
+/* ---------- CURSOS PRECONGRESO · Miércoles 18 y jueves 19 (solo inscritos al curso) ---------- */
+add("tal",MI,"07:15","14:30","Curso · Ventilación mecánica neonatal","07:15 Bienvenida y pretest · Bloque 1: RN pretérmino con SDR en sala de partos (evidencia en ventilación no invasiva, simulacro práctico, discusión) · 9:20 Break · Bloque 2: Ventilación convencional (gráficos y ajuste de parámetros, volumen garantizado, práctica de modos sincronizados) · 11:20 Brunch · Bloque 3: VAFO y VAFO + VG (inicio y destete, práctica con ventilador) · 1:15 Discusión final y cierre. Certifica: Universidad El Bosque y Los Cobos Medical Center","p15","workshop");
+add("tal",MI,"08:00","11:00","Curso · Soporte nutricional especializado: del acceso al cálculo","Nutrición en el paciente crítico · Enteral y parenteral · Bloque de especialidades de cuidado","aud5","workshop");
+add("tal",MI,"08:30","17:00","Curso Internacional POCUS Neonatal SCAN · Día 1 (EpicLatino)","08:30 U/S en neonatología: bases y knobología (Dr. Sumesh Thomas) · 09:10 Anatomía cerebral y cardíaca (Dr. Carlos Fajardo) · 09:40 Ductus, HPPRN, hipovolemia y función cardíaca (Dr. Essa Al Awad) · 10:15 Anormalidades cerebrales y U/S pulmonar (Dr. Carlos Fajardo) · 10:45 Café · 11:00 Acceso vascular, posición de CVU, U/S vejiga y taponamiento cardíaco (Dr. Essa Al Awad) · 11:30 Estaciones prácticas · 13:30 Almuerzo · 14:30 Estaciones: U/S cardíaco, anatomía cardíaca y ventanas, localización de CUV, U/S pulmonar, taponamiento, acceso vascular y punción vesical","lcpocus","workshop");
+add("tal",J,"09:00","17:00","Curso Internacional POCUS Neonatal SCAN · Día 2 (prácticas)","09:00 U/S cerebral: HIV, LPV, hidrocefalia y mediciones ventriculares · 10:30 Café · 10:45 HPPRN, hipovolemia y función cardíaca · 12:15 Almuerzo · 13:30 Prácticas intrahospitalarias: anatomía normal en U/S cerebral y ECO, vejiga urinaria","lcpocus","workshop");
 
 /* ---------- GENERAL · Jueves 19 ---------- */
 add("gen",J,"08:00","08:30","Inauguración del 2.º Congreso Internacional de Cuidado Intensivo","Presidentes de la conferencia: Luis Arcadio Cortés, Oscar Ovalle, Gustavo A. Cortés, Albert Valencia · Miguel Otero, Presidente Los Cobos MC · Manuel Garay Fernández, Presidente AMCI","tbd","panel");
@@ -434,11 +442,11 @@ const PENDING = {
   apo:{room:"fund", text:"Enfermería y áreas de apoyo se realizan en el Auditorio Fundadores de El Bosque. Programación detallada por confirmar."}
 };
 const PENDING_DAY = {
-  [SA]:"Sábado 21: sesión práctica hands-on de la Mayo Clinic Mechanical Ventilation Conference y talleres de POCUS y ventilación mecánica neonatal. Horarios y salas por confirmar."
+  [SA]:"Sábado 21: sesión práctica hands-on de la Mayo Clinic Mechanical Ventilation Conference. Horarios y salas por confirmar."
 };
 
-const DAYS = [{d:J,w:"Jue",n:19},{d:V,w:"Vie",n:20},{d:SA,w:"Sáb",n:21}];
-const EVENT_START = new Date("2026-11-19T07:00:00-05:00");
+const DAYS = [{d:MI,w:"Mié",n:18},{d:J,w:"Jue",n:19},{d:V,w:"Vie",n:20},{d:SA,w:"Sáb",n:21}];
+const EVENT_START = new Date("2026-11-18T07:00:00-05:00");
 
 
 /* ====================== LÓGICA ====================== */
@@ -485,7 +493,7 @@ function sessHTML(s,n){
   return `<article class="sess ${s.type==="break"?"brk":""} ${live?"on":""}" style="--c:${c}">
     <div class="tm">${s.start}<small>${s.end}</small></div>
     <div><h3>${s.title}</h3>${s.who?`<div class="who">${s.who}</div>`:""}
-      <div class="meta">${live?'<span class="chip live">EN VIVO</span>':""}${s.type==="workshop"?'<span class="chip">Solo inscritos al taller</span>':""}<span class="chip trk" style="--c:${c}">${TRACKS[s.track].name}</span>${where}</div></div></article>`;
+      <div class="meta">${live?'<span class="chip live">EN VIVO</span>':""}${s.type==="workshop"?'<span class="chip">Solo inscritos</span>':""}<span class="chip trk" style="--c:${c}">${TRACKS[s.track].name}</span>${where}</div></div></article>`;
 }
 function mineHTML(){
   if(!MY) return "";
@@ -497,11 +505,13 @@ function mineHTML(){
 function renderInicio(){
   const n=bogotaNow();
   $("#mineBox").innerHTML=mineHTML();
-  const start=new Date("2026-11-19T08:00:00-05:00");
-  if(n.real && new Date()<start){
-    const ms=start-new Date(), d=Math.floor(ms/864e5), h=Math.floor(ms/36e5)%24, m=Math.floor(ms/6e4)%60;
-    $("#countBox").innerHTML=`<div class="card" style="margin-top:16px"><div style="font-weight:700;color:var(--navy)">El congreso inicia el jueves 19 a las 8:00 a.m.</div><div class="countdown"><div><b>${d}</b><small>días</small></div><div><b>${h}</b><small>horas</small></div><div><b>${m}</b><small>min</small></div></div></div>`;
-  } else $("#countBox").innerHTML="";
+  const goals=[["Los talleres inician el miércoles 18 a las 7:15 a.m.","2026-11-18T07:15:00-05:00"],["El congreso inicia el jueves 19 a las 8:00 a.m.","2026-11-19T08:00:00-05:00"]];
+  const now=new Date();
+  const cards=n.real?goals.filter(([,t])=>now<new Date(t)).map(([lbl,t])=>{
+    const ms=new Date(t)-now, d=Math.floor(ms/864e5), h=Math.floor(ms/36e5)%24, m=Math.floor(ms/6e4)%60;
+    return `<div class="card" style="margin-top:16px"><div style="font-weight:700;color:var(--navy)">${lbl}</div><div class="countdown"><div><b>${d}</b><small>días</small></div><div><b>${h}</b><small>horas</small></div><div><b>${m}</b><small>min</small></div></div></div>`;
+  }):[];
+  $("#countBox").innerHTML=cards.join("");
   const live=S.filter(s=>isLive(s,n)).sort((a,b)=>(b.track===MY)-(a.track===MY));
   const next=S.filter(s=>s.day===n.day && toMin(s.start)>n.min && s.type!=="break").sort((a,b)=>toMin(a.start)-toMin(b.start)).slice(0,4);
   $("#nowLabel").innerHTML=(live.length?'<span class="live-dot"></span>':"")+"Está pasando ahora";
@@ -525,7 +535,7 @@ function renderAgenda(){
   const list=S.filter(s=>s.day===state.day&&(state.track==="all"||s.track===state.track||(s.track==="gen"&&!overlaps(s)))).sort((a,b)=>toMin(a.start)-toMin(b.start));
   const blocks=state.track==="all"?[]:BLOCKS.filter(b=>b.track===state.track&&b.day===state.day);
   let h=list.map(s=>{const bl=blocks.find(b=>b.start===s.start&&s.track===b.track); return (bl?`<div class="blk" style="--c:${TRACKS[bl.track].color}">${bl.t}</div>`:"")+sessHTML(s,n);}).join("");
-  Object.entries(PENDING).filter(([k])=>state.track==="all"||state.track===k).forEach(([k,p])=>{
+  Object.entries(PENDING).filter(([k])=>state.day!==MI&&(state.track==="all"||state.track===k)).forEach(([k,p])=>{
     h+=`<div class="sess" style="--c:${TRACKS[k].color}"><div class="tm">·</div><div><h3>${TRACKS[k].name}</h3><div class="who">Programación detallada por confirmar.</div><div class="meta"><button class="chip go" data-go="${p.room}">${PIN_ICO}${roomName(p.room)}</button></div></div></div>`;
   });
   if(PENDING_DAY[state.day]) h+=`<div class="empty" style="margin-top:8px">${PENDING_DAY[state.day]}</div>`;
