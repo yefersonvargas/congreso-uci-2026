@@ -115,7 +115,7 @@ a{color:inherit}
 .dlist{display:flex;flex-direction:column;gap:8px}
 .chip.yt{background:#fff0f0;border-color:#f3c4c4;color:#c4161c;text-decoration:none}
 .chip.yt svg{width:14px;height:14px}
-.ytlist{display:grid;gap:8px}
+.ytlist{display:grid;gap:8px;grid-template-columns:minmax(0,1fr)}
 .ytrow{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;min-height:62px;text-decoration:none;color:inherit}
 .ytrow:active{transform:scale(.98)}
 .ytrow .ic{width:40px;height:40px;border-radius:10px;background:#e62117;display:grid;place-items:center;flex:none}
@@ -766,6 +766,13 @@ function showTab(tab){
 }
 function renderAll(){ if(state.tab==="inicio")renderInicio(); if(state.tab==="agenda")renderAgenda(); if(state.tab==="llegar")renderLlegar(); }
 
+/* Transmisiones: siempre en pestaña nueva para no perder la guía */
+document.addEventListener("click",e=>{
+  const a=e.target.closest('a[target="_blank"]'); if(!a) return;
+  e.preventDefault();
+  const w=window.open(a.href,"_blank");
+  if(w){ try{w.opener=null;}catch(_){} } else { location.assign(a.href); }
+},true);
 document.addEventListener("click",e=>{
   const t=e.target.closest("[data-tab],[data-day],[data-track],[data-go],[data-act],[data-step]"); if(!t) return;
   const d=t.dataset;
