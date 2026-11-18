@@ -766,13 +766,6 @@ function showTab(tab){
 }
 function renderAll(){ if(state.tab==="inicio")renderInicio(); if(state.tab==="agenda")renderAgenda(); if(state.tab==="llegar")renderLlegar(); }
 
-/* Transmisiones: siempre en pestaña nueva para no perder la guía */
-document.addEventListener("click",e=>{
-  const a=e.target.closest('a[target="_blank"]'); if(!a) return;
-  e.preventDefault();
-  const w=window.open(a.href,"_blank");
-  if(w){ try{w.opener=null;}catch(_){} } else { location.assign(a.href); }
-},true);
 document.addEventListener("click",e=>{
   const t=e.target.closest("[data-tab],[data-day],[data-track],[data-go],[data-act],[data-step]"); if(!t) return;
   const d=t.dataset;
