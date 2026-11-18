@@ -113,6 +113,22 @@ a{color:inherit}
 .entry b{display:block;color:var(--navy);font-size:15.5px}
 .entry span{font-size:13.5px;color:var(--muted)}
 .dlist{display:flex;flex-direction:column;gap:8px}
+.chip.yt{background:#fff0f0;border-color:#f3c4c4;color:#c4161c;text-decoration:none}
+.chip.yt svg{width:14px;height:14px}
+.ytlist{display:grid;gap:8px}
+.ytrow{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;min-height:62px;text-decoration:none;color:inherit}
+.ytrow:active{transform:scale(.98)}
+.ytrow .ic{width:40px;height:40px;border-radius:10px;background:#e62117;display:grid;place-items:center;flex:none}
+.ytrow .ic svg{width:18px;height:18px;fill:#fff}
+.ytrow .tx{flex:1;min-width:0}
+.ytrow b{display:block;font-size:15.5px;color:var(--navy);line-height:1.25}
+.ytrow .chev{width:20px;height:20px;color:#a3adbb;flex:none}
+.ytrow .tx>span{display:block;font-size:13px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ytrow .lv{display:inline-block;font-size:11px;font-weight:800;color:#fff;background:var(--live);border-radius:6px;padding:2px 6px;margin-left:6px;vertical-align:2px}
+.ytbar{display:flex;gap:6px;overflow-x:auto;margin:0 -16px 10px;padding:2px 16px;scrollbar-width:none;align-items:center}
+.ytbar::-webkit-scrollbar{display:none}
+.ytbar small{flex:none;font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.ytbar .chip{flex:none}
 .drow{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;min-height:68px;cursor:pointer}
 .drow .dot{width:12px;height:12px;border-radius:50%;background:var(--c);flex:none;box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 18%,#fff)}
 .drow .tx{flex:1;min-width:0}
@@ -204,6 +220,7 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;padding:24px 0 0}
   </header>
   <div id="mineBox"></div>
   <div id="countBox"></div>
+  <div id="ytBox"></div>
   <div class="label" id="nowLabel">Ahora</div>
   <div id="nowList"></div>
   <div class="label">A continuación</div>
@@ -448,6 +465,17 @@ const PENDING_DAY = {
   [SA]:"Sábado 21: sesión práctica hands-on de la Mayo Clinic Mechanical Ventilation Conference. Horarios y salas por confirmar."
 };
 
+/* ---------- TRANSMISIONES EN VIVO (YouTube) por día y sala ---------- */
+const YT = id=>"https://www.youtube.com/watch?v="+id;
+const STREAMS = {
+  [J]: {aupri:"Q42SngNh_50", fund:"UomLREOrCHM", aud5:"U-8UVrtZ900", solar:"9MC1TIbhTNc"},
+  [V]: {aupri:"1id-P22S0IE", fund:"MvHHYWy1xKE", aud5:"MJkB3dtperc", solar:"IFI1TxEEf7I"},
+  [SA]:{aupri:"3hjGNNRofvI", fund:"bmjHXA4F7EE", aud5:"A08i9DBWlvo", solar:"XPY5qQicWVc"}
+};
+const STREAM_ORDER = ["aupri","fund","aud5","solar"];
+const PLAY_ICO = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>';
+const streamOf = s => s.type!=="break" && STREAMS[s.day] ? STREAMS[s.day][s.room] : null;
+
 const DAYS = [{d:MI,w:"Mié",n:18},{d:J,w:"Jue",n:19},{d:V,w:"Vie",n:20},{d:SA,w:"Sáb",n:21}];
 const EVENT_START = new Date("2026-11-18T07:00:00-05:00");
 
@@ -496,7 +524,7 @@ function sessHTML(s,n){
   return `<article class="sess ${s.type==="break"?"brk":""} ${live?"on":""}" style="--c:${c}">
     <div class="tm">${s.start}<small>${s.end}</small></div>
     <div><h3>${s.title}</h3>${s.who?`<div class="who">${s.who}</div>`:""}
-      <div class="meta">${live?'<span class="chip live">EN VIVO</span>':""}${s.type==="workshop"?'<span class="chip">Solo inscritos</span>':""}<span class="chip trk" style="--c:${c}">${TRACKS[s.track].name}</span>${where}</div></div></article>`;
+      <div class="meta">${live?'<span class="chip live">EN VIVO</span>':""}${streamOf(s)?`<a class="chip yt" href="${YT(streamOf(s))}" target="_blank" rel="noopener">${PLAY_ICO}${live?"Ver transmisión en vivo":"Ver transmisión"}</a>`:""}${s.type==="workshop"?'<span class="chip">Solo inscritos</span>':""}<span class="chip trk" style="--c:${c}">${TRACKS[s.track].name}</span>${where}</div></div></article>`;
 }
 function mineHTML(){
   if(!MY) return "";
@@ -515,6 +543,14 @@ function renderInicio(){
     return `<div class="card" style="margin-top:16px"><div style="font-weight:700;color:var(--navy)">${lbl}</div><div class="countdown"><div><b>${d}</b><small>días</small></div><div><b>${h}</b><small>horas</small></div><div><b>${m}</b><small>min</small></div></div></div>`;
   }):[];
   $("#countBox").innerHTML=cards.join("");
+  const sd = STREAMS[n.day] ? n.day : (n.day < J ? J : null);
+  if(sd){
+    const dn = DAYS.find(x=>x.d===sd);
+    $("#ytBox").innerHTML=`<div class="label">Transmisiones en vivo · ${sd===n.day?"hoy":dn.w+" "+dn.n} </div><div class="ytlist">`+STREAM_ORDER.map(k=>{
+      const on = sd===n.day ? S.find(s=>s.room===k&&s.day===sd&&isLive(s,n)&&s.type!=="break") : null;
+      return `<a class="ytrow" href="${YT(STREAMS[sd][k])}" target="_blank" rel="noopener"><span class="ic">${PLAY_ICO}</span><span class="tx"><b>${roomName(k)}${on?'<span class="lv">EN VIVO</span>':""}</b><span>${on?on.title:"Ver en YouTube"}</span></span>${CHEV}</a>`;
+    }).join("")+`</div>`;
+  } else $("#ytBox").innerHTML="";
   const live=S.filter(s=>isLive(s,n)).sort((a,b)=>(b.track===MY)-(a.track===MY));
   const next=S.filter(s=>s.day===n.day && toMin(s.start)>n.min && s.type!=="break").sort((a,b)=>toMin(a.start)-toMin(b.start)).slice(0,4);
   $("#nowLabel").innerHTML=(live.length?'<span class="live-dot"></span>':"")+"Está pasando ahora";
@@ -542,6 +578,7 @@ function renderAgenda(){
     h+=`<div class="sess" style="--c:${TRACKS[k].color}"><div class="tm">·</div><div><h3>${TRACKS[k].name}</h3><div class="who">Programación detallada por confirmar.</div><div class="meta"><button class="chip go" data-go="${p.room}">${PIN_ICO}${roomName(p.room)}</button></div></div></div>`;
   });
   if(PENDING_DAY[state.day]) h+=`<div class="empty" style="margin-top:8px">${PENDING_DAY[state.day]}</div>`;
+  if(STREAMS[state.day]) h=`<div class="ytbar"><small>Transmisión</small>`+STREAM_ORDER.map(k=>`<a class="chip yt" href="${YT(STREAMS[state.day][k])}" target="_blank" rel="noopener">${PLAY_ICO}${roomName(k)}</a>`).join("")+`</div>`+h;
   $("#agendaList").innerHTML=h||'<div class="empty">No hay sesiones de esta agenda este día.</div>';
 }
 document.addEventListener("scroll",()=>{const st=$("#agSticky"); if(st) st.classList.toggle("shadow",window.scrollY>90);},{passive:true});
