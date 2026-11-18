@@ -311,10 +311,10 @@ const ROOMS = {
         arrive:"En el lobby de Los Cobos toma el ascensor al piso 5. Allí está el Solarium.", how:"Agenda de Neonatología."},
   p15:{name:"Piso 15", short:"Los Cobos", venue:"cobos", pin:[513,737], node:"LCD", photo:"", floor:15,
         arrive:"En el lobby de Los Cobos toma el ascensor al piso 15.", how:"Cursos de ventilación mecánica neonatal y pediátrica."},
-  sim:{name:"Laboratorio de Simulación", short:"Bloque B", venue:"ueb", pin:[430,700], node:"B", tour:"node93", photo:"", verify:true,
-        arrive:"Llegaste al Bloque B. Los laboratorios de simulación están en este edificio.", how:"Taller POCUS pediátrico."},
-  lcpocus:{name:"Sala por confirmar", short:"Los Cobos", venue:"cobos", pin:[528,756], node:"LCD", photo:"",
-        arrive:"Llegaste a Los Cobos Medical Center. La sala del curso POCUS neonatal está por confirmar: pregunta en recepción.", how:"Curso Internacional POCUS Neonatal SCAN."},
+  sim:{name:"Centro de Simulación", short:"Bloque B", venue:"ueb", pin:[430,700], node:"B", tour:"node93", photo:"", verify:true,
+        arrive:"Llegaste al Bloque B. El Centro de Simulación está en este edificio.", how:"Curso POCUS neonatal (18 y 19 en la mañana) y taller POCUS pediátrico."},
+  lcpocus:{name:"Los Cobos (prácticas POCUS)", short:"Los Cobos", venue:"cobos", pin:[528,756], node:"LCD", photo:"",
+        arrive:"Llegaste a Los Cobos Medical Center. Pregunta en recepción por las prácticas intrahospitalarias del curso POCUS neonatal.", how:"Prácticas intrahospitalarias del curso POCUS neonatal (jueves 19 en la tarde)."},
   tbd:{name:"Sala por confirmar", venue:null}
 };
 
@@ -355,8 +355,9 @@ const MI="2026-11-18", J="2026-11-19", V="2026-11-20", SA="2026-11-21";
 /* ---------- CURSOS PRECONGRESO · Miércoles 18 y jueves 19 (solo inscritos al curso) ---------- */
 add("tal",MI,"07:15","14:30","Curso · Ventilación mecánica neonatal","07:15 Bienvenida y pretest · Bloque 1: RN pretérmino con SDR en sala de partos (evidencia en ventilación no invasiva, simulacro práctico, discusión) · 9:20 Break · Bloque 2: Ventilación convencional (gráficos y ajuste de parámetros, volumen garantizado, práctica de modos sincronizados) · 11:20 Brunch · Bloque 3: VAFO y VAFO + VG (inicio y destete, práctica con ventilador) · 1:15 Discusión final y cierre. Certifica: Universidad El Bosque y Los Cobos Medical Center","p15","workshop");
 add("tal",MI,"08:00","11:00","Curso · Soporte nutricional especializado: del acceso al cálculo","Nutrición en el paciente crítico · Enteral y parenteral · Bloque de especialidades de cuidado","aud5","workshop");
-add("tal",MI,"08:30","17:00","Curso Internacional POCUS Neonatal SCAN · Día 1 (EpicLatino)","08:30 U/S en neonatología: bases y knobología (Dr. Sumesh Thomas) · 09:10 Anatomía cerebral y cardíaca (Dr. Carlos Fajardo) · 09:40 Ductus, HPPRN, hipovolemia y función cardíaca (Dr. Essa Al Awad) · 10:15 Anormalidades cerebrales y U/S pulmonar (Dr. Carlos Fajardo) · 10:45 Café · 11:00 Acceso vascular, posición de CVU, U/S vejiga y taponamiento cardíaco (Dr. Essa Al Awad) · 11:30 Estaciones prácticas · 13:30 Almuerzo · 14:30 Estaciones: U/S cardíaco, anatomía cardíaca y ventanas, localización de CUV, U/S pulmonar, taponamiento, acceso vascular y punción vesical","lcpocus","workshop");
-add("tal",J,"09:00","17:00","Curso Internacional POCUS Neonatal SCAN · Día 2 (prácticas)","09:00 U/S cerebral: HIV, LPV, hidrocefalia y mediciones ventriculares · 10:30 Café · 10:45 HPPRN, hipovolemia y función cardíaca · 12:15 Almuerzo · 13:30 Prácticas intrahospitalarias: anatomía normal en U/S cerebral y ECO, vejiga urinaria","lcpocus","workshop");
+add("tal",MI,"08:30","17:00","Curso Internacional POCUS Neonatal SCAN · Día 1 (EpicLatino)","08:30 U/S en neonatología: bases y knobología (Dr. Sumesh Thomas) · 09:10 Anatomía cerebral y cardíaca (Dr. Carlos Fajardo) · 09:40 Ductus, HPPRN, hipovolemia y función cardíaca (Dr. Essa Al Awad) · 10:15 Anormalidades cerebrales y U/S pulmonar (Dr. Carlos Fajardo) · 10:45 Café · 11:00 Acceso vascular, posición de CVU, U/S vejiga y taponamiento cardíaco (Dr. Essa Al Awad) · 11:30 Estaciones prácticas · 13:30 Almuerzo · 14:30 Estaciones: U/S cardíaco, anatomía cardíaca y ventanas, localización de CUV, U/S pulmonar, taponamiento, acceso vascular y punción vesical","sim","workshop");
+add("tal",J,"09:00","12:15","Curso Internacional POCUS Neonatal SCAN · Día 2 (prácticas, mañana)","09:00 U/S cerebral: HIV, LPV, hidrocefalia y mediciones ventriculares · 10:30 Café · 10:45 HPPRN, hipovolemia y función cardíaca · 12:15 Almuerzo. En la tarde el curso continúa en Los Cobos","sim","workshop");
+add("tal",J,"13:30","17:00","Curso Internacional POCUS Neonatal SCAN · Día 2 (prácticas intrahospitalarias)","Anatomía normal en U/S cerebral y ECO · Vejiga urinaria","lcpocus","workshop");
 
 /* ---------- GENERAL · Jueves 19 ---------- */
 add("gen",J,"08:00","08:30","Inauguración del 2.º Congreso Internacional de Cuidado Intensivo","Presidentes de la conferencia: Luis Arcadio Cortés, Oscar Ovalle, Gustavo A. Cortés, Albert Valencia · Miguel Otero, Presidente Los Cobos MC","tbd","panel");
