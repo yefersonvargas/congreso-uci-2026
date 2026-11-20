@@ -320,7 +320,7 @@ const ROOMS = {
   central:{name:"Auditorio Central", short:"Bloque O", venue:"ueb", pin:[842,655], node:"OC", tour:"", photo:"",
         arrive:"Llegaste al Bloque O. El Auditorio Central está en este edificio.", how:"Refrigerios, muestra comercial y competencia de investigación."},
   fund:{name:"Auditorio Fundadores", short:"Bloque A", venue:"ueb", pin:[792,731], node:"TQ", tour:"node72", photo:IMG_FUND,
-        arrive:"Al pasar los torniquetes estás en el edificio Fundadores (Bloque A). El auditorio está en este edificio.", how:"Áreas de apoyo."},
+        arrive:"Al pasar los torniquetes estás en el edificio Fundadores (Bloque A). El auditorio está en este edificio.", how:"Cuidado integral: enfermería, nutrición y rehabilitación."},
   aud5:{name:"Auditorio piso 5", short:"Los Cobos", venue:"cobos", pin:[506,746], node:"LCD", photo:"", floor:5,
         arrive:"En el lobby de Los Cobos toma el ascensor al piso 5.", how:"Agenda de Pediatría y curso de soporte nutricional."},
   solar:{name:"Solarium", short:"Los Cobos", venue:"cobos", pin:[520,746], node:"LCD", photo:"", floor:5,
@@ -376,8 +376,8 @@ add("tal",J,"09:00","12:15","Curso Internacional POCUS Neonatal SCAN · Día 2 (
 add("tal",J,"13:30","17:00","Curso Internacional POCUS Neonatal SCAN · Día 2 (prácticas intrahospitalarias)","Anatomía normal en U/S cerebral y ECO · Vejiga urinaria","lcpocus","workshop");
 
 /* ---------- GENERAL · Jueves 19 ---------- */
-add("gen",J,"08:00","08:30","Inauguración del 2.º Congreso Internacional de Cuidado Intensivo","Presidentes de la conferencia: Luis Arcadio Cortés, Oscar Ovalle, Gustavo A. Cortés, Albert Valencia · Miguel Otero, Presidente Los Cobos MC","tbd","panel");
-add("gen",J,"08:30","09:15","Conversatorio: La ciencia de humanizar el cuidado intensivo","Moderador: Luis Arcadio Cortés · Expertos: Miguel Otero, Gustavo A. Cortés, Grace M. Arteaga, Ray C. Stetson, Richard A. Oeckler, Bernardo J. Selim, Kaiser G. Lim, Sunil Mankad","tbd","panel");
+add("gen",J,"08:00","08:30","Inauguración del 2.º Congreso Internacional de Cuidado Intensivo","Presidentes de la conferencia: Luis Arcadio Cortés, Oscar Ovalle, Gustavo A. Cortés, Albert Valencia · Miguel Otero, Presidente Los Cobos MC","aupri","panel");
+add("gen",J,"08:30","09:15","Conversatorio: La ciencia de humanizar el cuidado intensivo","Moderador: Luis Arcadio Cortés · Expertos: Miguel Otero, Gustavo A. Cortés, Grace M. Arteaga, Ray C. Stetson, Richard A. Oeckler, Bernardo J. Selim, Kaiser G. Lim, Sunil Mankad","aupri","panel");
 
 /* ---------- ADULTOS · Jueves 19 · Cardiovascular y neurocrítico ---------- */
 add("adu",J,"09:15","09:45","The Heart Team en cuidado crítico cardiovascular","Sunil Mankad, M.D.","aupri");
@@ -443,6 +443,79 @@ add("ped",V,"12:45","13:45","Simposio almuerzo Hetero: PROA y las intervenciones
 add("ped",V,"14:00","16:00","Conversatorio: Inteligencia artificial en el paciente pediátrico crítico","Anticipar, personalizar y decidir: de la predicción del deterioro al copiloto clínico · Dra. Alexandra Jiménez · Dra. Ledys Izquierdo · Dr. Mauricio Sarta · Dra. Rosalba Pardo","aud5","panel");
 add("ped",V,"16:00","17:00","Competencia de investigación: presentación oral o póster y premiación","Jurado Comité de Investigación · Dr. Pedro Barrera","aud5","panel");
 
+/* ---------- NEONATOLOGÍA · Solarium, Los Cobos ---------- */
+add("neo",J,"09:30","09:45","Bienvenida neonatólogos","Ricardo Sánchez, M.D. · Claudia Devia, M.D. · Oscar Ovalle, M.D.","solar","panel");
+add("neo",J,"09:45","10:30","Mejoramiento en la calidad: ¿cómo implementarlo?","Ray C. Stetson, M.D. · Carlos Fajardo, M.D. · Ricardo Sánchez, M.D. · Nubia Peña, M.D.","solar","panel");
+add("neo",J,"10:30","11:05","Ventilación mecánica no invasiva en pretérminos extremos: ¿cómo y cuándo?","Ray C. Stetson, M.D. · Mayo Clinic","solar");
+add("neo",J,"11:05","11:35","POCUS, una herramienta de rutina en la unidad: casos prácticos","Carlos Fajardo, M.D.","solar");
+add("neo",J,"11:35","12:05","Enfoque práctico actual de shock neonatal","Sumesh Thomas, M.D.","solar");
+add("neo",J,"12:05","12:35","Ductus arterioso persistente del prematuro: cuándo cerrarlo y cómo hacerlo","Essa Al Awad, M.D.","solar");
+add("neo",J,"12:35","12:50","Preguntas del auditorio","Lina Saza, M.D.","solar","panel");
+add("neo",J,"12:50","14:00","Almuerzo y simposio taller Laboratorio Avalon: aplicación de surfactante mínimamente invasivo","","solar","panel");
+add("neo",J,"14:00","14:40","Ventilación convencional con volumen garantizado: evidencia actual y consejos prácticos","María Eulalia Tamayo, M.D.","solar");
+add("neo",J,"14:40","15:15","Conversatorio: ventilación convencional invasiva, aplicaciones prácticas desde el inicio al destete","Alejandro Colmenares, M.D. · María Eulalia Tamayo, M.D.","solar","panel");
+add("neo",J,"15:15","16:00","Refrigerio y muestra comercial","","solar","break");
+add("neo",J,"16:00","16:30","Administración de surfactante mínimamente invasiva: ¿qué hemos aprendido?","Alejandro Colmenares, M.D. · Consenso Surfactante ASCON","solar");
+add("neo",J,"16:30","17:15","NAVA: ¿es el destete sincronizado ideal? Instrucciones prácticas de manejo","Ana María Gómez, M.D.","solar");
+add("neo",J,"17:15","18:00","Ventilación no invasiva: conversatorio de expertos","José María Solano, M.D. · Alejandro Colmenares, M.D. · Ana María Gómez, M.D.","solar","panel");
+add("neo",V,"08:00","08:35","VAFO más VG: ¿qué dice la evidencia?","Manuel Sánchez Luna, M.D.","solar");
+add("neo",V,"08:35","09:10","Nuevas modalidades en prematurez extrema: el futuro de la placenta artificial","Daniel Sanín Ramírez, M.D.","solar");
+add("neo",V,"09:10","09:45","Ventilación jet: evidencia y recomendaciones prácticas actuales","Ray C. Stetson, M.D. · Mayo Clinic","solar");
+add("neo",V,"09:45","10:20","Refrigerio y muestra comercial","","solar","break");
+add("neo",V,"10:20","11:00","VAFO nasal: ¿qué dice la evidencia actual?","Daniele De Luca, M.D.","solar");
+add("neo",V,"11:00","11:45","Conversatorio: ventilación de alta frecuencia","Ray C. Stetson, M.D. · Manuel Sánchez Luna, M.D. · María E. Tamayo, M.D.","solar","panel");
+add("neo",V,"11:45","12:10","Homenaje y reconocimiento a la Dra. Ángela Hoyos, neonatóloga","","solar","panel");
+add("neo",V,"12:10","13:30","Almuerzo y muestra comercial","","solar","break");
+add("neo",V,"13:30","14:15","Reclutamiento alveolar: estrategias actuales de manejo","Manuel Sánchez Luna, M.D.","solar");
+add("neo",V,"14:15","15:00","Hernia diafragmática: enfoque actual de manejo","Rubén Bromiker, M.D.","solar");
+add("neo",V,"15:00","15:45","Conversatorio: cómo destetar un pretérmino extremo del ventilador","Alan Figueroa, M.D. · Manuel Sánchez Luna, M.D. · María E. Tamayo, M.D. · Natalia Saavedra, M.D.","solar","panel");
+add("neo",V,"15:45","16:15","Refrigerio y muestra comercial","","solar","break");
+add("neo",V,"16:15","17:00","Nutrición en el prematuro con displasia broncopulmonar: cambios clave 2026","Héctor Romero, M.D.","solar");
+add("neo",V,"17:00","17:45","Nutrición en el prematuro 2026: conversatorio de expertos","Nataly Hastamory, M.D. · Ariel Salas, M.D. · Héctor Romero, M.D.","solar","panel");
+add("neo",V,"17:45","18:15","El papel del intensivista y neonatólogo durante el sismo en Colombia","Andrés Sáenz, M.D.","solar");
+add("neo",SA,"08:00","08:45","Enfoque actual en UCI del RN asfixiado y en hipotermia 2026","Héctor Romero, M.D.","solar");
+add("neo",SA,"08:45","09:15","Comentarios: puntos clave en protección cerebral del RN asfixiado","Carolina Serrano, M.D. · Nubia Peña, M.D. · Manuel Sánchez Luna, M.D.","solar","panel");
+add("neo",SA,"09:15","10:00","Reanimación neonatal 2026: conversatorio de expertos","Mónica Sánchez, M.D. · Ray C. Stetson, M.D. · Héctor Romero, M.D. · Ricardo Sánchez, M.D.","solar","panel");
+add("neo",SA,"10:00","10:45","Refrigerio y muestra comercial","","solar","break");
+add("neo",SA,"10:45","11:15","Reanimación en el pretérmino extremo (en límite de viabilidad): recomendaciones prácticas éticas","María A. Niño, M.D.","solar");
+add("neo",SA,"11:15","12:00","Mediación bioética en resolución de casos difíciles (padres y personal UCIN)","Sandra Navarro, M.D. · María A. Niño, M.D. · Chantal Angueyra, M.D. · Ray C. Stetson, M.D.","solar","panel");
+
+/* ---------- CUIDADO INTEGRAL INTERDISCIPLINARIO (Enfermería, nutrición, rehabilitación) · Auditorio Fundadores ---------- */
+add("apo",J,"09:30","10:15","Conversatorio: hablemos del síndrome post-UCI","Moderadora: Viviana Suárez Cuadros, M.D. · Expertas: Andrea Quiñónez, Enfermera, Mg · Lina Moreno Gómez, ND · Alejandra Guerrero, PHT · Ana Castillo, M.D.","fund","panel");
+add("apo",J,"10:15","10:30","Desayuno y muestra comercial","","fund","break");
+add("apo",J,"10:30","11:00","Síndrome post-UCI: una epidemia silenciosa después de la supervivencia","Mario Andrés Narváez Martínez, Enfermero, Mg","fund");
+add("apo",J,"11:00","11:30","El empoderamiento de los padres para el cuidado del hijo prematuro","Sandra Patricia Osorio Galeano, Enfermera, PhD","fund");
+add("apo",J,"11:30","12:00","P-PICS, más allá de la supervivencia: un enfoque integral","Alexander Casallas Vega, Enfermero, Mg","fund");
+add("apo",J,"12:00","12:30","PICS-F en padres de recién nacidos y niños críticos","Natalia Andrea Henao Murillo, Enfermera, Mg","fund");
+add("apo",J,"12:30","14:00","Almuerzo y muestra comercial","","central","break");
+add("apo",J,"14:05","14:35","La UCI sin secuelas: ¿mito o realidad?","Hanier Fajardo Rocha, Enfermera, Mg","fund");
+add("apo",J,"14:35","15:05","Delirium: la puerta de entrada al síndrome post-UCI","Kabed González Urutia, Enfermera, Mg","fund");
+add("apo",J,"15:05","15:35","Refrigerio y muestra comercial","","fund","break");
+add("apo",J,"15:35","16:05","Calidad de vida en los sobrevivientes de UCI","Marcia Andrea Quiñónez Mora, Enfermera, Mg","fund");
+add("apo",J,"16:05","16:35","Más allá de la infección: efectos del aislamiento hospitalario en el paciente crítico y la familia","Cristian Felipe Rivera Cardona, Enfermero, PhD","fund");
+add("apo",V,"08:00","08:40","Timing de la nutrición enteral: entre el beneficio y el riesgo","Valeria Abrahão Rosenfeld, M.D.","fund");
+add("apo",V,"08:40","09:20","Síndrome de realimentación: el riesgo silencioso en UCI","Lina Moreno Gómez, ND","fund");
+add("apo",V,"09:20","10:30","Sarcopenia aguda en UCI: medición práctica al lado de la cama","Nafer Anaya Ariza, M.D.","fund");
+add("apo",V,"10:40","11:10","Inmunonutrición en UCI: ¿modular la inflamación o modular el pronóstico?","Luis Miguel Marroquín, M.D.","fund");
+add("apo",V,"11:20","11:50","Microbiota en el paciente crítico: del intestino a la falla orgánica","Yolanda Quintero Gómez, ND","fund");
+add("apo",V,"12:00","12:30","Sondas y catéteres: el rol invisible de enfermería en el soporte nutricional del paciente crítico","Graciela Aguilar Fajardo, Enfermera Esp.","fund");
+add("apo",V,"12:35","13:00","Terapia cetogénica en epilepsia refractaria: más allá del tratamiento farmacológico","Sharisma Isabel Obispo, ND","fund");
+add("apo",V,"13:00","14:00","Almuerzo y muestra comercial","","central","break");
+add("apo",V,"14:00","14:30","Desafíos nutricionales en UCI pediátrica","Ángela Gómez Pinzón, ND","fund");
+add("apo",V,"14:30","15:00","De la parenteral a la enteral: transición segura en el neonato","Geraldine Vargas, ND","fund");
+add("apo",V,"15:10","15:25","Refrigerio y muestra comercial","","central","break");
+add("apo",V,"15:25","15:50","Rehabilitación integral: un proceso continuo desde la mejora, la experiencia, la literatura y el hacer","Tatiana Barreto, Terapeuta Respiratoria · Alejandra Guerrero, Fisioterapeuta","fund");
+add("apo",V,"15:50","16:50","Panel de expertos: el paciente crítico como centro del cuidado, experiencias desde diferentes disciplinas","Moderadora: Xiomara Aguirre, TR · Erika Sánchez Barrera, Enfermera, Mg · Lina Moscoso, TR · Marcela Castillo, FT · Ana María Torres, Fonoaudióloga · Sandra Milena Osuna, TO","fund","panel");
+add("apo",SA,"08:00","09:00","Taller: ecografía de la musculatura respiratoria en el paciente crítico, del monitoreo al destete ventilatorio","FT. Henry Mauricio Parada","fund");
+add("apo",SA,"09:00","09:20","Perfusión periférica como semáforo de seguridad en la rehabilitación","FT. Camila Fonseca","fund");
+add("apo",SA,"09:20","10:00","Manejo integral de la traqueostomía desde la indicación hasta la decanulación","TR. Yenifer Torres · TR. Carolina Lotta","fund");
+add("apo",SA,"10:00","10:30","Actualización en las asincronías paciente-ventilador","FT. Andrés Mauricio Enríquez Popayán","fund");
+add("apo",SA,"10:40","11:10","Experiencia Cobos: más allá de la intubación, la era del surfactante mínimamente invasivo","TR. Cecilia Romero","fund");
+add("apo",SA,"11:10","11:40","De la urgencia a la terapia intensiva: el papel estratégico de la terapia respiratoria en la evolución de la falla respiratoria","TR. Margarita Marín","fund");
+add("apo",SA,"11:40","12:10","Prevención y manejo del delirium en el paciente crítico","TO. Diana Carolina Rincón","fund");
+add("apo",SA,"12:10","12:40","Disfagia post-UCI: detección temprana y prevención de complicaciones","Fonoaudióloga Johanna Rodríguez","fund");
+add("apo",SA,"12:40","13:10","Taller: rol de la terapia de alto flujo como primer escalón terapéutico y su aplicación en diferentes entornos","FT. Clara Herrera","fund");
+
 /* ---------- TALLERES (solo para inscritos al taller) ---------- */
 add("tal",V,"13:00","18:30","Taller 01 · Ventilación mecánica basada en predictores dinámicos","13:00 Registro · 13:30 Principios teóricos · 15:30 Coffee break · 16:00 Escenarios prácticos. Facultad: Pablo Cruces, Grace M. Arteaga, Javier Ponce, Angélica Rodríguez, Andrea Rodríguez, Deicy Angarita, Margarita Marín, Clara Herrera","p15","workshop");
 add("tal",SA,"07:30","13:00","Taller 02 · POCUS en el paciente pediátrico crítico","07:30 Registro · 08:00 Principios teóricos · 10:00 Coffee break · 10:30 Escenarios prácticos. Facultad: Javier Ponce, Grace M. Arteaga, Deicy Angarita, Angélica Rodríguez, Andrea Rodríguez","sim","workshop");
@@ -452,13 +525,19 @@ const BLOCKS = [
   {track:"ped",day:J,start:"09:30",t:"Bloque · Sepsis"},
   {track:"ped",day:J,start:"14:00",t:"Bloque · Ecografía en cuidado crítico (POCUS)"},
   {track:"ped",day:V,start:"08:00",t:"Bloque · Ventilación mecánica"},
-  {track:"ped",day:V,start:"14:00",t:"Inteligencia artificial e investigación"}
+  {track:"ped",day:V,start:"14:00",t:"Inteligencia artificial e investigación"},
+  {track:"apo",day:J,start:"09:30",t:"Bloque · Enfermería"},
+  {track:"apo",day:V,start:"08:00",t:"Bloque · Nutrición"},
+  {track:"apo",day:V,start:"10:40",t:"Bloque mixto"},
+  {track:"apo",day:V,start:"14:00",t:"Bloque · Pediatría y neonatos"},
+  {track:"apo",day:V,start:"15:25",t:"Bloque · Rehabilitación"},
+  {track:"apo",day:SA,start:"08:00",t:"Bloque · Rehabilitación y terapia respiratoria"},
+  {track:"apo",day:SA,start:"10:40",t:"Bloque mixto"}
 ];
 
 /* Agendas aún sin detalle: se muestra su sede */
 const PENDING = {
-  neo:{room:"solar", text:"Neonatología se realiza en el Solarium de Los Cobos. Programación detallada por confirmar."},
-  apo:{room:"fund", text:"Enfermería y áreas de apoyo se realizan en el Auditorio Fundadores de El Bosque. Programación detallada por confirmar."}
+
 };
 const PENDING_DAY = {
   [SA]:"Sábado 21: sesión práctica hands-on de la Mayo Clinic Mechanical Ventilation Conference. Horarios y salas por confirmar."
